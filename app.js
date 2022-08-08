@@ -1,20 +1,28 @@
 const http = require("http");
+const bodyParser = require("body-parser"); //body parser library. To install do npm install --save body-parser
 
 const express = require("express");
 
 const app = express();
 
-app.use((req, res, next) => {
-  console.log("In the middleware");
-  next(); //In order to go to the next function we have to use next to tell the middleware to go down.
-  //It follows top to bottom approach.
+app.use(bodyParser.urlencoded({ extended: false })); //Has to be defined on the top for the parsing to work.
+
+app.use("/add-product", (req, res, next) => {
+  //A post request with a form.
+  res.send(
+    '<form action="/product" method="POST"><input type="text" name="title"><button type="submit">Add</button></form>'
+  );
 });
 
-app.use((req, res, next) => {
-  console.log("In another middleware!");
-  // ...
+app.use("/product", (req, res, next) => {
+  //When add-product form is executed then it is directed here and redirected to / with res.redirect
+  console.log(req.body);
+  res.redirect("/");
 });
 
-const server = http.createServer(app);
+app.use("/", (req, res, next) => {
+  //Default
+  res.send("<h1>Hello from expressjs</h1>");
+});
 
-server.listen(3000, console.log("Server is running at localhost:3000"));
+app.listen(3000, console.log("Server is running at localhost"));
