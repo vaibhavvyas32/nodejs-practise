@@ -10,6 +10,8 @@ const rootDir = require("./util/path");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(express.static(path.join(__dirname, "public"))); //A built-in way in expressjs to serve the files directly instead of sendFile. These files are readable only for the user.
+
 app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 
