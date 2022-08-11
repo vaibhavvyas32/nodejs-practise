@@ -17,22 +17,22 @@
 }
 
 .form-control input {
-    border: 1px solid #dbc441;
+    border: 1px solid #42c5ad;
     font-family: sans-serif;
     border-radius: 2px;
 }
 
 button {
     font-family: sans-serif;
-    border: 1px solid #6200ff;
+    border: 1px solid #000000;
     background: white;
-    color: #6200ff;
+    color: #000000;
     border-radius: 3px;
     cursor: pointer;
 }
 
 button:hover,
 button:active {
-    background-color: #6200ff;
+    background-color: #000000;
     color:white;
 }
